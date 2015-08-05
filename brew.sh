@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
 #==============================================================================
-# Installs homebrew and some handy tools
+# Installs Homebrew and some handy tools
+#
+# Packages:
+# - Wget (W/ IRI Support)
+# - Brew Cask
+# - Git
+# - Libsass
+# - Node.js
+#
 #==============================================================================
-
 
 # Ask for the administrator password upfront.
 sudo -v
@@ -25,11 +32,8 @@ echo Homebrew installed. Now some plugins...
 # Upgrade any already-installed formulae.
 brew upgrade --all
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
 # Install other useful binaries
-brew install wget
+brew install wget --with-iri
 brew install brew-cask
 
 # Install useful dev envornment tools
