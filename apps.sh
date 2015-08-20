@@ -38,3 +38,4 @@ brew cask install xslimmer
 #==============================================================================
 sh apps/chrome.sh
 sh apps/transmission.sh
+sh apps/atom.sh
