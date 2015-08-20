@@ -52,3 +52,22 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom right screen corner → Desktop
 defaults write com.apple.dock wvous-bl-corner -int 4
 defaults write com.apple.dock wvous-bl-modifier -int 0
+
+# Wipe all (default) app icons from the Dock
+defaults write com.apple.dock persistent-apps -array
+
+# Add applications to the Dock
+dockutil --add /Applications/Mail.app
+dockutil --add /Applications/Sunrise\ Calendar.app
+dockutil --add /Applications/Google\ Chrome\ Canary.app
+dockutil --add /Applications/Spotify.app
+dockutil --add /Applications/iTerm.app
+dockutil --add /Applications/SourceTree.app
+dockutil --add /Applications/Sketch.app
+dockutil --add /Applications/Atom.app
+defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+
+echo Items have been added. Reloading the dock...
+
+killall Dock
