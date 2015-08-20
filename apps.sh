@@ -19,7 +19,7 @@ brew cask install atom
 brew cask install imageoptim
 brew cask install imagealpha
 brew cask install sourcetree
-brew cask install sketch-beta
+brew cask install sketch-tool
 brew cask install sketch-toolbox
 
 echo Installing Media apps
