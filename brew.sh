@@ -35,6 +35,7 @@ brew upgrade --all
 # Install other useful binaries
 brew install wget --with-iri
 brew install caskroom/cask/brew-cask
+brew tap caskroom/versions # enable alternate versions of Casks
 
 # Install useful dev envornment tools
 brew install git
