@@ -4,7 +4,7 @@
 # finder.sh
 # Configures Finder with good defaults
 #==============================================================================
-
+echo Running Finder tweaks...
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
 
@@ -79,3 +79,5 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	General -bool true \
 	OpenWith -bool true \
 	Privileges -bool true
+
+echo Done!

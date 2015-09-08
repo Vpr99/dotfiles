@@ -4,7 +4,7 @@
 # dock.sh
 # Configures the dock with good defaults
 #==============================================================================
-
+echo Running Dock tweaks...
 # Set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 36
 
