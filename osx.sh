@@ -13,3 +13,4 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 sh osx/system.sh
 sh osx/finder.sh
 sh osx/dock.sh
+sh osx/terminal.sh

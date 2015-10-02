@@ -2,5 +2,5 @@
 
 ## ToDo's
 
-- [ ] Sync PList files (Divvy)
-- [ ] Store .zshrc and iTerm2 configs
+* Store .zshrc and iTerm2 configs
+* Change grid settings and icon size on desktop
