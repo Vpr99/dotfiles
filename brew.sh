@@ -36,12 +36,14 @@ brew upgrade --all
 brew install wget --with-iri
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions # enable alternate versions of Casks
-brew install dockutil
+# brew install dockutil - BROKEN
 
 # Install useful dev envornment tools
 brew install git
 brew install libsass
 brew install node
+
+sh osx/fonts.sh
 
 # Remove outdated versions from the cellar.
 brew cleanup
