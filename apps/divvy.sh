@@ -14,4 +14,4 @@
 # echo Divvy has been configured. You still need to add Shortcuts & Global Hotkey
 
 
-cp -RfXv "..apps/prefs/com.mizage.Divvy.plist" "~/Library/Preferences"
+cp -RfXv "../apps/prefs/com.mizage.Divvy.plist" "/Users/ericskram/Library/Preferences"

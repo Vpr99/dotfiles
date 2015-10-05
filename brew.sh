@@ -36,7 +36,7 @@ brew upgrade --all
 brew install wget --with-iri
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions # enable alternate versions of Casks
-# brew install dockutil - BROKEN
+brew install https://github.com/keith/homebrew/raw/ks-dockutil/Library/Formula/dockutil.rb # Switch back to Dockutil when fixed.
 
 # Install useful dev envornment tools
 brew install git
