@@ -4,14 +4,10 @@
 # Install various applications
 #==============================================================================
 
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_CASK_OPTS="--caskroom=/Applications"
 
 echo Installing Core apps
-brew cask install 1password
-brew cask install bartender
-brew cask install divvy
 brew cask install dropbox
-brew cask install xtrafinder
 brew cask install keka
 
 echo Installing Development apps
@@ -29,6 +25,7 @@ brew cask install spotify
 brew cask install vlc
 brew cask install slack
 brew cask install subler
+brew cask install transmission
 
 echo Installing Utilities
 brew cask install appcleaner

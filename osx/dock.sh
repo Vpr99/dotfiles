@@ -62,10 +62,10 @@ dockutil --add /Applications/Calendar.app
 dockutil --add /Applications/Google\ Chrome\ Canary.app
 dockutil --add /Applications/Spotify.app
 dockutil --add /Applications/Slack.app
-dockutil --add /Applications/iTerm.app
+# dockutil --add /Applications/iTerm.app
 dockutil --add /Applications/SourceTree.app
-dockutil --add /Applications/Sketch.app
-dockutil --add /Applications/Atom.app
+# dockutil --add /Applications/Sketch.app
+# dockutil --add /Applications/Atom.app
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
