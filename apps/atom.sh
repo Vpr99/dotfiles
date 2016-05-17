@@ -6,7 +6,5 @@
 #==============================================================================
 
 apm install sync-settings
-echo ----------
-echo Open Sync Settings configuration in Atom Settings.
-echo Paste Github Personal Access Token from 1Password
-echo ----------
+
+cat ~/Dropbox/System/Config/atom.txt >> ~/.atom/config.cson

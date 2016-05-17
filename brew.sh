@@ -34,9 +34,9 @@ brew upgrade --all
 
 # Install other useful binaries
 brew install wget --with-iri
-brew install caskroom/cask/brew-cask
-brew tap caskroom/versions # enable alternate versions of Casks
 brew install dockutil
+brew install Fish
+brew install ffmpeg --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
 
 # Install useful dev envornment tools
 brew install git

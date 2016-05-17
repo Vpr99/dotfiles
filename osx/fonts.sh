@@ -6,3 +6,6 @@ brew cask install font-roboto
 brew cask install font-bebas-neue
 brew cask install font-lato
 brew cask install font-open-sans
+
+# Install all Dropbox fonts
+cp -a ~/Dropbox/System/Fonts/. ~/Library/Fonts
