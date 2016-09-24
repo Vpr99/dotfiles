@@ -11,6 +11,9 @@ defaults write com.apple.dock tilesize -int 32
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
 
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
 # Enable spring loading for all Dock items
 defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
@@ -57,13 +60,13 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.dock persistent-apps -array
 
 # Add applications to the Dock
-dockutil --add /Applications/Mail.app
-dockutil --add /Applications/Calendar.app
-dockutil --add /Applications/Google\ Chrome\ Canary.app
-dockutil --add /Applications/Spotify.app
-dockutil --add /Applications/Slack.app
+# dockutil --add /Applications/Mail.app
+# dockutil --add /Applications/Calendar.app
+# dockutil --add /Applications/Google\ Chrome\ Canary.app
+# dockutil --add /Applications/Spotify.app
+# dockutil --add /Applications/Slack.app
 # dockutil --add /Applications/iTerm.app
-dockutil --add /Applications/SourceTree.app
+# dockutil --add /Applications/SourceTree.app
 # dockutil --add /Applications/Sketch.app
 # dockutil --add /Applications/Atom.app
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
