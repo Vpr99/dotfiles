@@ -5,6 +5,6 @@
 # Sync's my Atom configuration
 #==============================================================================
 
-apm install sync-settings
+brew cask install atom
 
-cat ~/Dropbox/System/Config/atom.txt >> ~/.atom/config.cson
+apm install sync-settings

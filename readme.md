@@ -25,3 +25,8 @@ Fish Shell
 
 Things  that depend on dropbox
  - Apps/Sketch
+
+
+1. osx/system.sh
+2. osx/finder.sh
+3. osx/dock.sh

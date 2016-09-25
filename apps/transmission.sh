@@ -5,6 +5,8 @@
 # Configures Transmission with good defaults
 #==============================================================================
 
+brew cask install transmission
+
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false
 

@@ -59,16 +59,7 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 # Wipe all (default) app icons from the Dock
 defaults write com.apple.dock persistent-apps -array
 
-# Add applications to the Dock
-# dockutil --add /Applications/Mail.app
-# dockutil --add /Applications/Calendar.app
-# dockutil --add /Applications/Google\ Chrome\ Canary.app
-# dockutil --add /Applications/Spotify.app
-# dockutil --add /Applications/Slack.app
-# dockutil --add /Applications/iTerm.app
-# dockutil --add /Applications/SourceTree.app
-# dockutil --add /Applications/Sketch.app
-# dockutil --add /Applications/Atom.app
+# Add spacers to the Dock
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 

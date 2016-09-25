@@ -36,13 +36,15 @@ brew upgrade --all
 brew install wget --with-iri
 brew install dockutil
 brew install Fish
-brew install ffmpeg --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
 
 # Install useful dev envornment tools
 brew install git
-brew install libsass
 brew install node
 
+# Configure everything else that uses homebrew
+sh apps.sh
+
+#
 sh osx/fonts.sh
 
 # Remove outdated versions from the cellar.
