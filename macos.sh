@@ -222,7 +222,7 @@ defaults write com.apple.dock no-bouncing -bool true
 defaults write com.Apple.Dock show-recents -bool false
 
 # Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
+defaults write com.apple.dock tilesize -int 48
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
