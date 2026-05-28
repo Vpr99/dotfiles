@@ -1,0 +1,5 @@
+# Route all SSH auth through the 1Password agent.
+# Requires: 1Password app installed + Settings -> Developer -> "Use the SSH agent".
+# Your SSH keys live in 1Password — there are no private keys on disk.
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

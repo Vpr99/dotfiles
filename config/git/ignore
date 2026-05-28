@@ -1,0 +1,25 @@
+# Global gitignore (~/.config/git/ignore)
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Direnv
+.envrc.local
+
+# Agent / local tooling
+.beads/
+.claude/settings.local.json
+
+# Logs / temp
+*.log
+.tmp/

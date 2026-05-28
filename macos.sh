@@ -1,9 +1,11 @@
+#!/usr/bin/env bash
 ###############################################################################
-# macOS Dotfiles                                                              #
+# macOS defaults                                                              #
 #                                                                             #
-# Sources:                                                                    #
-#   - https://github.com/webpro/dotfiles                                      #
-#   - https://github.com/mathiasbynens/dotfiles                               #
+# Values reconciled against Eric's actual machine (2026-05) so a fresh Mac    #
+# matches this one — not the generic webpro/mathias defaults.                 #
+#                                                                             #
+# Run:  bash macos.sh                                                         #
 ###############################################################################
 SCREENSHOTS_FOLDER="${HOME}/Desktop"
 
@@ -20,10 +22,13 @@ while true; do
 done 2> /dev/null &
 
 ###############################################################################
-# Localization                                                                #
+# Appearance & Localization                                                   #
 ###############################################################################
 
-# Set the time zone
+# Dark mode (this machine runs Dark)
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+# Set the time zone automatically via location + network time
 sudo defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
 sudo systemsetup -setusingnetworktime on
 
@@ -67,7 +72,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the “Are you sure you want to open this application?” dialog
+# Disable the "Are you sure you want to open this application?" dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable Resume system-wide
@@ -80,41 +85,38 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 # Keyboard & Input                                                            #
 ###############################################################################
 
-# Disable smart quotes and dashes as they’re annoying when typing code
+# Disable smart quotes and dashes (annoying when typing code)
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Enable full keyboard access for all controls
-# (e.g. enable Tab in modal dialogs)
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Enable full keyboard access for all controls (Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+# Fast keyboard repeat (this machine: KeyRepeat 2, InitialKeyRepeat 10)
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
-# Automatically illuminate built-in MacBook keyboard in low light
+# Built-in keyboard backlight in low light, off after 5 min idle
 defaults write com.apple.BezelServices kDim -bool true
-
-# Turn off keyboard illumination when computer is not used for 5 minutes
 defaults write com.apple.BezelServices kDimTime -int 300
-
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
 # Trackpad, mouse, Bluetooth accessories                                      #
 ###############################################################################
 
-# Trackpad: enable tap to click for this user and for the login screen
+# Tap to click (this user + login screen)
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: swipe between pages with three fingers
+# Swipe between pages with three fingers
 defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 1
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 1
@@ -126,56 +128,48 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 # Screen                                                                      #
 ###############################################################################
 
-# Save screenshots to the ~/Screenshots folder
+# Save screenshots to the Desktop, PNG, no window shadow
 defaults write com.apple.screencapture location -string "${SCREENSHOTS_FOLDER}"
-
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
-
-# Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
-# Enable subpixel font rendering on non-Apple LCDs
+# Subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
 
-# Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+# Allow quitting via ⌘Q
 defaults write com.apple.finder QuitMenuItem -bool true
 
-# Finder: disable window animations and Get Info animations
+# Disable window + Get Info animations
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-# Finder: show hidden files by default
+# Show hidden files and all extensions
 defaults write com.apple.finder AppleShowAllFiles -bool true
-
-# Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Finder: show status bar
-defaults write com.apple.finder ShowStatusBar -bool true
-
-# Finder: show path bar
+# Status bar OFF, path bar ON (matches this machine)
+defaults write com.apple.finder ShowStatusBar -bool false
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Finder: allow text selection in Quick Look
+# Allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# Display full POSIX path as Finder window title
+# Full POSIX path as window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-# When performing a search, search the current folder by default
+# Search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# Disable the warning when changing a file extension
+# No warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Avoid creating .DS_Store files on network or USB volumes
+# Avoid .DS_Store on network/USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
@@ -184,76 +178,56 @@ defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# Use AirDrop over every interface.
+# AirDrop over every interface
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-# Always open everything in Finder's list view.
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+# Column view in all Finder windows by default (icnv, clmv, Flwv, Nlsv)
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
-# Disable the warning before emptying the Trash
+# No warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
+# Expand File Info panes: General, Open with, Sharing & Permissions
 defaults write com.apple.finder FXInfoPanesExpanded -dict General -bool true OpenWith -bool true Privileges -bool true
 
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
 
-# Show indicator lights for open applications in the Dock
+# Indicator lights for open apps
 defaults write com.apple.dock show-process-indicators -bool true
 
-# Don’t animate opening applications from the Dock
+# Don't animate opening apps
 defaults write com.apple.dock launchanim -bool false
 
-# Automatically hide and show the Dock
+# Auto-hide the Dock, no delay, no animation
 defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
 
-# Make Dock icons of hidden applications translucent
+# Translucent icons for hidden apps
 defaults write com.apple.dock showhidden -bool true
 
 # No bouncing icons
 defaults write com.apple.dock no-bouncing -bool true
 
-# Don't show recently used applications in the Dock
-defaults write com.Apple.Dock show-recents -bool false
+# No recent apps in the Dock
+defaults write com.apple.dock show-recents -bool false
 
-# Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 48
+# Icon size 63px (matches this machine)
+defaults write com.apple.dock tilesize -int 63
+
+# No magnification
+defaults write com.apple.dock magnification -bool false
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
-
-# Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
-# Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
-
-# Don’t group windows by application in Mission Control
-# (i.e. use the old Exposé behavior instead)
+# Don't group windows by app in Mission Control (old Exposé behavior)
 defaults write com.apple.dock expose-group-by-app -bool false
 
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Don’t automatically rearrange Spaces based on most recent use
+# Don't auto-rearrange Spaces by recent use
 defaults write com.apple.dock mru-spaces -bool false
-
-###############################################################################
-# iTerm2                                                                      #
-###############################################################################
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###############################################################################
 # Kill affected applications                                                  #
@@ -263,4 +237,4 @@ for app in "Dock" "Finder" "SystemUIServer"; do
   killall "${app}" &> /dev/null
 done
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo "Done. Some changes require a logout/restart to take effect."

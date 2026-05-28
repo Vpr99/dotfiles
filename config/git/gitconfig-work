@@ -1,0 +1,7 @@
+# Work identity — applies under ~/code/work/
+# TODO(new gig): set your work email and the matching 1Password SSH signing key.
+[user]
+    name = Eric Skram
+    email = CHANGEME@newgig.com
+    # Get the public key from 1Password: the SSH key item -> "Copy Public Key"
+    # signingkey = ssh-ed25519 AAAA...

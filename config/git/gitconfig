@@ -1,0 +1,46 @@
+# Base git config. Identity is resolved per-directory via the includes below:
+#   ~/code/work/*     -> gitconfig-work     (fill in your new-gig email/key)
+#   ~/code/personal/* -> gitconfig-personal
+[includeIf "gitdir:~/code/work/"]
+  path = ~/.gitconfig-work
+[includeIf "gitdir:~/code/personal/"]
+  path = ~/.gitconfig-personal
+
+[user]
+  name = Eric Skram
+
+[push]
+  autoSetupRemote = true
+[rebase]
+  autosquash = true
+
+# Commit signing via 1Password's SSH agent (Touch ID per signature).
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+  gpgsign = true
+
+[core]
+  editor = zed --wait
+  pager = delta --line-numbers --dark
+[delta]
+  side-by-side = true
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[alias]
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+  ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --decorate"
+
+[credential "https://github.com"]
+  helper =
+  helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper =
+  helper = !/opt/homebrew/bin/gh auth git-credential

@@ -1,0 +1,5 @@
+# Personal identity — applies under ~/code/personal/
+[user]
+    name = Eric Skram
+    email = eric@skram.com
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPfdjQWQeP+Zu8QFLQ/JjX1IHcdfkLQzYG/yi0dI4uy
