@@ -116,7 +116,7 @@ cask "discord"
 cask "signal"
 cask "zoom"
 cask "spotify"
-cask "linear-linear"
+cask "linear"
 cask "figma"
 cask "dropbox"
 
