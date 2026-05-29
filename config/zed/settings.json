@@ -2,6 +2,7 @@
   // === Theme & Appearance ===
   // VSC: "Monokai Pro (Filter Machine)" — keeping Catppuccin for now, install
   // "Monokai Pro" from extensions if you want parity
+  "cli_default_open_behavior": "new_window",
   "outline_panel": {
     "dock": "left"
   },
@@ -27,13 +28,13 @@
     "show_tab_bar_buttons": false,
   },
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
-    "dark": "Kanagawa Wave - No Italics",
+    "dark": "Kanagawa Dragon",
   },
   "icon_theme": {
-    "mode": "light",
-    "light": "Catppuccin Latte",
+    "mode": "dark",
+    "light": "Catppuccin Macchiato",
     "dark": "Catppuccin Latte",
   },
 
@@ -42,8 +43,8 @@
 
   // === Fonts ===
   // VSC: editor.fontFamily / editor.fontSize / editor.lineHeight
-  "buffer_font_family": "Iosevka ES Terminal",
-  "buffer_font_size": 13,
+  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_size": 12.0,
   "buffer_line_height": { "custom": 1.75 },
   // VSC: editor.fontLigatures (all your OpenType features)
   "buffer_font_features": {
