@@ -9,6 +9,11 @@
 [user]
   name = Eric Skram
 
+# Force all GitHub traffic over SSH (via the 1Password agent), even for repos
+# cloned with an https:// URL. Stops the "Username for https://github.com" prompt.
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
 [push]
   autoSetupRemote = true
 [rebase]
