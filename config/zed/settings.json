@@ -1,0 +1,208 @@
+{
+  // === Theme & Appearance ===
+  // VSC: "Monokai Pro (Filter Machine)" — keeping Catppuccin for now, install
+  // "Monokai Pro" from extensions if you want parity
+  "outline_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {},
+    },
+    "sidebar_side": "left",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "base_keymap": "VSCode",
+  "tab_bar": {
+    "show": true,
+    "show_tab_bar_buttons": false,
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Kanagawa Wave - No Italics",
+  },
+  "icon_theme": {
+    "mode": "light",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Latte",
+  },
+
+  // === AI ===
+  "disable_ai": false,
+
+  // === Fonts ===
+  // VSC: editor.fontFamily / editor.fontSize / editor.lineHeight
+  "buffer_font_family": "Iosevka ES Terminal",
+  "buffer_font_size": 13,
+  "buffer_line_height": { "custom": 1.75 },
+  // VSC: editor.fontLigatures (all your OpenType features)
+  "buffer_font_features": {
+    "calt": true,
+    "liga": true,
+    "dlig": true,
+    "ss01": true,
+    "ss02": true,
+    "ss03": true,
+    "ss04": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+  },
+  // VSC: apc.font.family — UI font
+  "ui_font_family": "Berkeley Mono",
+  "ui_font_size": 14,
+
+  // === Editor Behavior ===
+  // VSC: editor.formatOnSave
+  "format_on_save": "on",
+  // VSC: editor.linkedEditing
+  "linked_edits": true,
+  // VSC: editor.inlineSuggest.enabled
+  "show_edit_predictions": true,
+  // VSC: editor.cursorBlinking: "blink"
+  "cursor_blink": true,
+  // VSC: editor.bracketPairColorization.enabled
+  "colorize_brackets": true,
+  // VSC: editor.hover.enabled
+  "hover_popover_enabled": true,
+  // VSC: editor.cursorSurroundingLines: 15
+  "vertical_scroll_margin": 15,
+  // VSC: editor.rulers: [80, 120]
+  "wrap_guides": [80, 120],
+
+  // === Inlay Hints ===
+  // VSC: editor.inlayHints.enabled: "off"
+  "inlay_hints": {
+    "enabled": false,
+  },
+
+  // === Minimap ===
+  // VSC: editor.minimap.enabled: false
+  "minimap": {
+    "show": "never",
+  },
+
+  // === Diagnostics ===
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+
+  // === Scrollbar ===
+  "scrollbar": {
+    "show": "auto",
+    "cursors": false,
+    "git_diff": false,
+    "search_results": false,
+    "selected_text": false,
+    "selected_symbol": false,
+    "diagnostics": "all",
+  },
+
+  // === Status Bar ===
+  "status_bar": {
+    "experimental.show": true,
+  },
+
+  // === Title Bar ===
+  "title_bar": {
+    "show_branch_status_icon": true,
+    "show_user_picture": false,
+    "show_onboarding_banner": false,
+  },
+
+  // === Tabs ===
+  "tabs": {
+    "git_status": true,
+    "file_icons": true,
+    "show_diagnostics": "all",
+  },
+  // VSC: workbench.editor.enablePreview: false
+  "preview_tabs": {
+    "enabled": false,
+  },
+
+  // === Project Panel (File Explorer) ===
+  // VSC: workbench.tree.indent: 12, renderIndentGuides: "none", stickyScroll: false
+  "project_panel": {
+    "dock": "left",
+    "indent_size": 12,
+    "indent_guides": {
+      "show": "never",
+    },
+    "sticky_scroll": false,
+    "show_diagnostics": "all",
+  },
+
+  // === Collaboration ===
+  "collaboration_panel": {
+    "dock": "left",
+    "button": false,
+  },
+
+  // === Search ===
+  "seed_search_query_from_cursor": "selection",
+
+  // === Git ===
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 500,
+      "min_column": 80,
+    },
+  },
+
+  // === Telemetry ===
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+
+  // === Language-Specific Overrides ===
+  // VSC: defaultFormatter biome, with deno overrides for TS/TSX
+  "languages": {
+    "TypeScript": {
+      "colorize_brackets": true,
+      "linked_edits": true,
+      "show_edit_predictions": true,
+      "formatter": {
+        "language_server": {
+          "name": "deno",
+        },
+      },
+    },
+    "TSX": {
+      "colorize_brackets": true,
+      "linked_edits": true,
+      "show_edit_predictions": true,
+      "formatter": {
+        "language_server": {
+          "name": "deno",
+        },
+      },
+    },
+    "JSON": {
+      "colorize_brackets": true,
+      "linked_edits": true,
+      "show_edit_predictions": true,
+      "formatter": {
+        "external": {
+          "command": "biome",
+          "arguments": ["format", "--stdin-file-path", "{buffer_path}"],
+        },
+      },
+    },
+  },
+}

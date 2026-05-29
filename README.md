@@ -26,6 +26,8 @@ git add -A && git commit && git push
 
 VS Code is deliberately **not** in the Brewfile (you said: back it up, don't necessarily reinstall). Restore later with `./scripts/restore-vscode.sh` after installing VS Code.
 
+Zed config (`settings.json` + `keymap.json`) lives in `config/zed/`. `link.sh` doesn't touch it; run `./scripts/bootstrap-zed.sh` to symlink it into `~/.config/zed/` (edits in Zed's UI flow back into the repo).
+
 ## Layout
 
 ```
@@ -38,9 +40,11 @@ scripts/
   runtimes.sh         shell, package managers, services
   backup-vscode.sh    run on OLD mac
   restore-vscode.sh   optional restore
+  bootstrap-zed.sh    symlink Zed config (standalone, not part of install.sh)
 config/
   fish/               config.fish + functions (claude, wt-* worktree helpers)
   git/                gitconfig (+ work/personal identity splits) + global ignore
+  zed/                settings.json + keymap.json (symlinked via bootstrap-zed.sh)
 claude/               CLAUDE.md, settings.json, commands/, statusline scripts
 agents/skills/        ~45 agent skills (symlinked to ~/.agents/skills + ~/.claude/skills)
 vscode/               backed-up VS Code config (not auto-installed)
