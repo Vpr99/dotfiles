@@ -127,7 +127,7 @@ Omit for trivial changes that don't introduce or modify boundaries.
 ### Data Isolation (if applicable)
 
 If the feature involves user-scoped database tables, note which tables need
-RLS policies and any cross-user operations. See the `database-rls` skill.
+RLS policies and any cross-user operations.
 
 Do NOT include specific file paths or code snippets. They may end up being
 outdated very quickly.

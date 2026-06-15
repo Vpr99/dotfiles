@@ -49,9 +49,9 @@ If the approach is fundamentally sound, say so. Don't manufacture concerns.
 - Injection, auth bypass, data exposure
 - Missing input validation at system boundaries
 - Will-break-in-prod issues
-- **Database isolation**: user-scoped SQL MUST use `withUserContext()`. If the
-  diff touches SQL, adapters, or repositories, load the `database-rls` skill
-  for the full checklist.
+- **Database isolation**: user-scoped queries must be isolated to the current
+  user/tenant (row-level security). Scrutinize any SQL, adapter, or repository
+  change for cross-user data leaks.
 
 ### Assumptions
 - What must be true for this to work?
