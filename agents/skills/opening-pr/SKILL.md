@@ -116,6 +116,9 @@ Adds break glass admin login via WebAuthn passkeys for when WorkOS is unreachabl
   PR is partial work toward a ticket that should stay open.
 - **No `## Summary` / `## Test Plan` / `## Why` headers.** Workshop PRs don't
   use them. Lead with the ticket link, then bullets or prose.
+- **Describe what changed, not what didn't.** Skip negative-space lines like
+  "no backend changes", "no schema migration", "doesn't touch the API". If an
+  area is untouched, just leave it out — absence isn't worth a bullet.
 - **No decorative content**: no poems, emoji headers, "this PR introduces…"
   preambles, or AI puffery.
 - **Screenshots**: include for visible UI changes. A screenshot alone is a
@@ -126,6 +129,8 @@ Adds break glass admin login via WebAuthn passkeys for when WorkOS is unreachabl
 
 - "This PR introduces a robust, seamless solution…" — slop. Cut it.
 - "Refactoring for better maintainability" — vague. Name the specific win.
+- "No backend changes / no migration needed" — describe what the PR does, not
+  what it doesn't. Omit untouched areas.
 - Bullet lists that paraphrase the diff line by line.
 - Em dashes, "delve", "leverage", "ensure", "showcase", "comprehensive".
 - Skipping the Linear link because "the diff is self-explanatory". It isn't.
