@@ -183,23 +183,6 @@ When a teammate reports blocked:
 - **Needs human input** → Ask the user
 - **Unclear** → Read the teammate's commits to understand what happened
 
-## Learnings Capture
-
-Throughout the session, maintain a learnings file at
-`docs/learnings/YYYY-MM-DD-<branch>.md`. Append notes whenever you observe
-something worth remembering:
-
-- A mistake two teammates made independently (suggests a CLAUDE.md gap)
-- A codebase quirk that confused a teammate during exploration
-- A pattern you noticed during diff review that isn't documented
-- A rejection reason that keeps recurring
-
-Keep it free-form. One line per observation is fine. This file gets consumed by
-the `remembering-learnings` skill and curated into CLAUDE.md.
-
-Create the `docs/learnings/` directory if it doesn't exist. Commit the file at
-session end with: `chore(meta): capture team lead learnings`
-
 ## Completion
 
 When all tasks are complete:
@@ -212,9 +195,8 @@ When all tasks are complete:
    ```
 2. If any errors, create fix tasks and resolve before finishing
 3. Run `git log` to see all commits from this session
-4. Commit the learnings file if it has content
-5. Summarize to the user: what was done, any decisions made, any concerns
-6. Clean up the team
+4. Summarize to the user: what was done, any decisions made, any concerns
+5. Clean up the team
 
 ## Rules
 

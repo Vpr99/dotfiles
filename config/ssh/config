@@ -1,3 +1,8 @@
+# Added by OrbStack: 'orb' SSH host for Linux machines
+# This only works if it's at the top of ssh_config (before any Host blocks).
+# This won't be added again if you remove it.
+Include ~/.orbstack/ssh/config
+
 # Route all SSH auth through the 1Password agent.
 # Requires: 1Password app installed + Settings -> Developer -> "Use the SSH agent".
 # Your SSH keys live in 1Password — there are no private keys on disk.

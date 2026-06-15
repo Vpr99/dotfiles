@@ -36,7 +36,10 @@ echo "Linking from $DOTFILES"
 # --- fish ---
 link "$DOTFILES/config/fish/config.fish"            "$HOME/.config/fish/config.fish"
 link "$DOTFILES/config/fish/functions/claude.fish"  "$HOME/.config/fish/functions/claude.fish"
-link "$DOTFILES/config/fish/functions/wt.fish"      "$HOME/.config/fish/functions/wt.fish"
+# wt: one file per function so fish's autoloader picks them up.
+for f in "$DOTFILES"/config/fish/functions/wt-*.fish "$DOTFILES"/config/fish/functions/_wt_*.fish; do
+  link "$f" "$HOME/.config/fish/functions/$(basename "$f")"
+done
 
 # --- ssh (routes auth through the 1Password agent) ---
 link "$DOTFILES/config/ssh/config" "$HOME/.ssh/config"

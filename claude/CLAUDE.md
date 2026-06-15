@@ -1,4 +1,12 @@
-You're working with Eric, a Staff Engineer.
+## Background Information
+
+You're working with Eric, a Staff Engineer at North Pole Security. He started out freelancing and building WordPress sites 20+ years ago as a teenager.
+
+North Pole Security is a cybersecurity company that specializes in proactive endpoint protection for macOS. The company was founded by the creators of Santa, Google's widely-adopted open source allowlisting tool, and they now maintain the project. North Pole Security recently raised $4 million in seed funding led by Andreessen Horowitz to accelerate their go-to-market efforts and enhance their flagship platform, Workshop. The company's mission is to tackle one of the hardest problems in cybersecurity by making proactive endpoint protection usable at scale, moving beyond the traditional reactive approach of detecting and responding to threats after they've already infiltrated systems.
+
+Workshop is North Pole Security's flagship enterprise-grade endpoint protection platform designed specifically for macOS environments. Workshop reimagines traditional allowlisting by using advanced automated safety guards and streamlined approval workflows to make this proven security approach scalable and practical for modern enterprises. The platform uses a prevention-first architecture that blocks unknown applications by default, stopping threats before they can run rather than chasing them after damage is done. Workshop provides real-time enforcement of policy changes, USB and SD media control to prevent unapproved device use, and granular telemetry for complete visibility across endpoints. The platform is built to work hand-in-hand with Fortune 500 companies, ensuring it's not only secure but usable in real-world enterprise environments. Workshop serves as a comprehensive administration console for managing Santa deployments across thousands of hosts, providing centralized monitoring, configuration, and maintenance capabilities.
+
+Santa is the underlying open source binary and file access authorization system for macOS that serves as the foundation for Workshop. Originally pioneered at Google and now maintained by North Pole Security, Santa is a high-performance security agent that provides binary authorization, file-access authorization, and rich system event logging. Santa operates by intercepting execution requests and deciding whether to allow or block them based on configurable rules and policies. It supports multiple rule types including binary hashes, signing certificates, Team IDs, and signing IDs, with a sophisticated precedence system for rule evaluation. Santa can operate in different modes including Monitor mode (which allows all executions but logs them), Lockdown mode (which only allows explicitly approved executions), and Standalone mode (which prompts users for approval). Beyond binary authorization, Santa also provides file-access authorization capabilities that can control which processes are allowed to read or write specific files, and comprehensive telemetry features that log various types of system events for security monitoring and analysis. Santa includes additional security features like USB/SD blocking for preventing data exfiltration and transitive allowlisting for development environments.
 
 <tool_preferences>
 
@@ -54,13 +62,13 @@ Skip the praise, skip the preamble, get to the point.
 </documentation_style>
 
 <git_commits>
-My global git config signs commits via 1Password's `op-ssh-sign`, which
-triggers a Touch ID prompt per signature. When I'm AFK, that prompt blocks
-forever and the agent wedges. You have standing authorization to pass
-`-c commit.gpgsign=false` on every `git commit` you run — no need to ask.
-This overrides only the signature; commits, hooks, and authorship are
-otherwise unaffected. Do NOT pass `--no-verify` or any other safety bypass
-under this license — signing only.
+Commits MUST be signed. My global git config signs via 1Password's
+`op-ssh-sign` (Touch ID per signature). GitHub branch protection on work repos
+requires verified signatures to merge, so unsigned commits block PRs.
+
+Never pass `-c commit.gpgsign=false`, `--no-gpg-sign`, `--no-verify`, or any
+other signing/safety bypass. If a commit hangs on a Touch ID prompt, that's a
+real prompt waiting for me — surface it and wait, don't work around it.
 </git_commits>
 
 ## TypeScript Mantras

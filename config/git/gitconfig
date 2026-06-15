@@ -8,6 +8,7 @@
 
 [user]
   name = Eric Skram
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDPfdjQWQeP+Zu8QFLQ/JjX1IHcdfkLQzYG/yi0dI4uy
 
 # Force all GitHub traffic over SSH (via the 1Password agent), even for repos
 # cloned with an https:// URL. Stops the "Username for https://github.com" prompt.
@@ -24,6 +25,7 @@
   format = ssh
 [gpg "ssh"]
   program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+  allowedSignersFile = ~/.config/git/allowed_signers
 [commit]
   gpgsign = true
 

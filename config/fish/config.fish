@@ -44,3 +44,26 @@ abbr --erase pp &>/dev/null; abbr --add pp "git pull"
 abbr --erase p &>/dev/null; abbr --add p "git push"
 abbr --erase c &>/dev/null; abbr --add c "clear"
 abbr --erase notes &>/dev/null; abbr --add notes "code $HOME/Dropbox/notes.md"
+abbr --erase workshop &>/dev/null; abbr --add workshop "cd $HOME/code/work/workshop"
+abbr --erase www &>/dev/null; abbr --add www "cd $HOME/code/work/www"
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# pnpm
+set -gx PNPM_HOME "/Users/ericskram/Library/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
+source /Users/ericskram/.config/op/plugins.sh
+
+# -----------------------------------------------------------------------------
+# 1Password-managed env (drain FIFO once per login → universal exported vars)
+# -----------------------------------------------------------------------------
+# First interactive shell after `set -Ue __OP_ENV_LOADED_AT` runs load-env;
+# every subsequent shell inherits the universal vars. To refresh: `load-env`.
+if status is-interactive; and not set -q __OP_ENV_LOADED_AT
+    load-env
+end
