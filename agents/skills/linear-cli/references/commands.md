@@ -2,20 +2,23 @@
 
 ## Commands
 
-- [auth](./auth.md) - Manage Linear authentication
-- [issue](./issue.md) - Manage Linear issues
-- [team](./team.md) - Manage Linear teams
-- [project](./project.md) - Manage Linear projects
-- [project-update](./project-update.md) - Manage project status updates
-- [cycle](./cycle.md) - Manage Linear team cycles
-- [milestone](./milestone.md) - Manage Linear project milestones
-- [initiative](./initiative.md) - Manage Linear initiatives
-- [initiative-update](./initiative-update.md) - Manage initiative status updates (timeline posts)
-- [label](./label.md) - Manage Linear issue labels
-- [document](./document.md) - Manage Linear documents
-- [config](./config.md) - Interactively generate .linear.toml configuration
-- [schema](./schema.md) - Print the GraphQL schema to stdout
-- [api](./api.md) - Make a raw GraphQL API request
+- [api](./api.md) - Send a raw GraphQL request to the Linear API
+- [auth](./auth.md) - Log in to workspaces and manage their credentials
+- [config](./config.md) - Write a .linear.toml for the current repository
+- [cycle](./cycle.md) - View team cycles
+- [document](./document.md) - Manage documents
+- [initiative](./initiative.md) - Manage initiatives
+- [initiative-update](./initiative-update.md) - Post and list initiative status updates
+- [issue](./issue.md) - Manage issues
+- [label](./label.md) - Manage issue labels
+- [markdown](./markdown.md) - Explain Linear-flavored Markdown: mentions and collapsible sections
+- [milestone](./milestone.md) - Manage project milestones
+- [project](./project.md) - Manage projects
+- [project-update](./project-update.md) - Post and list project status updates
+- [schema](./schema.md) - Print the Linear GraphQL schema
+- [team](./team.md) - Manage teams
+- [template](./template.md) - Browse issue, project and document templates
+- [user](./user.md) - List workspace members
 
 ## Quick Reference
 

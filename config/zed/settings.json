@@ -1,13 +1,12 @@
 {
   // === Theme & Appearance ===
-  // VSC: "Monokai Pro (Filter Machine)" — keeping Catppuccin for now, install
-  // "Monokai Pro" from extensions if you want parity
+  "diff_view_style": "split",
   "cli_default_open_behavior": "new_window",
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "agent": {
     "dock": "right",
@@ -30,7 +29,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Tokyo Night",
+    "dark": "Gruvbox Dark Hard",
   },
   "icon_theme": {
     "mode": "dark",
@@ -39,7 +38,7 @@
   },
 
   // === AI ===
-  "disable_ai": false,
+  "disable_ai": true,
 
   // === Fonts ===
   // VSC: editor.fontFamily / editor.fontSize / editor.lineHeight
@@ -169,41 +168,5 @@
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
-  },
-
-  // === Language-Specific Overrides ===
-  // VSC: defaultFormatter biome, with deno overrides for TS/TSX
-  "languages": {
-    "TypeScript": {
-      "colorize_brackets": true,
-      "linked_edits": true,
-      "show_edit_predictions": true,
-      "formatter": {
-        "language_server": {
-          "name": "deno",
-        },
-      },
-    },
-    "TSX": {
-      "colorize_brackets": true,
-      "linked_edits": true,
-      "show_edit_predictions": true,
-      "formatter": {
-        "language_server": {
-          "name": "deno",
-        },
-      },
-    },
-    "JSON": {
-      "colorize_brackets": true,
-      "linked_edits": true,
-      "show_edit_predictions": true,
-      "formatter": {
-        "external": {
-          "command": "biome",
-          "arguments": ["format", "--stdin-file-path", "{buffer_path}"],
-        },
-      },
-    },
   },
 }

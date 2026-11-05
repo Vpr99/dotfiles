@@ -1,0 +1,123 @@
+---
+title: Foo
+description: One-to-two sentence summary of what the Foo adapter connects to and its headline capabilities. Shown in search and listings.
+packageName: "YOUR_PUBLISHED_ADAPTER_PACKAGE"
+slug: foo
+type: platform
+tagline: One line on what the adapter connects to and who it's for. Shown on the adapter card.
+community: true
+# vendor-official only. Delete both lines for a community adapter:
+vendorOfficial: true
+author: Foo
+mdxBody: true
+# Capabilities live in the catalog entry's `features` field, not here.
+---
+
+{/* Section order and naming follow ../references/page-layout.md. Delete the
+    optional sections the adapter doesn't need, and replace
+    YOUR_PUBLISHED_ADAPTER_PACKAGE everywhere with the exact npm name of the
+    published adapter. This template describes a fictional Foo adapter. */}
+
+## Install
+
+{/* Only the adapter package, `chat`, and a state adapter. Any other package
+    goes in code blocks, not here: the catalog `peerDeps` must equal the extra
+    packages in this line (see the peerDeps invariant in SKILL.md). */}
+<PackageInstall package="YOUR_PUBLISHED_ADAPTER_PACKAGE chat @chat-adapter/state-memory" />
+
+## Quick start
+
+```typescript title="lib/bot.ts" lineNumbers
+import { Chat } from "chat";
+import { createMemoryState } from "@chat-adapter/state-memory";
+import { createFooAdapter } from "YOUR_PUBLISHED_ADAPTER_PACKAGE";
+
+export const bot = new Chat({
+  userName: "mybot",
+  adapters: {
+    foo: createFooAdapter({
+      apiKey: process.env.FOO_API_KEY,
+      webhookSecret: process.env.FOO_WEBHOOK_SECRET,
+    }),
+  },
+  state: createMemoryState(),
+});
+
+bot.onDirectMessage(async (thread, message) => {
+  await thread.post(`You said: ${message.text}`);
+});
+```
+
+The memory state adapter keeps subscriptions and locks in process memory, which suits local development. Use [Redis](/adapters/official/redis) or [PostgreSQL](/adapters/official/postgres) in production.
+
+Then create the webhook route:
+
+```typescript title="app/api/webhooks/foo/route.ts" lineNumbers
+import { bot } from "@/lib/bot";
+
+export async function POST(request: Request): Promise<Response> {
+  return bot.webhooks.foo(request);
+}
+```
+
+## Platform setup
+
+{/* Optional. Numbered steps in the vendor's dashboard. Match UI labels
+    exactly and bold them. */}
+
+1. In the Foo dashboard, create an app and copy its **API key** into `FOO_API_KEY`.
+2. Under **Webhooks**, set the URL to your deployed `/api/webhooks/foo` route and subscribe to message events.
+3. Copy the **Signing secret** into `FOO_WEBHOOK_SECRET`.
+
+{/* ## Authentication: add only when the adapter supports more than one
+    credential mode. One ### per mode, named after the mode, with
+    "### Vercel Connect" first when supported. */}
+
+## Configuration
+
+<TypeTable
+  type={{
+    apiKey: { type: "string", description: "Foo API key. Falls back to `FOO_API_KEY`." },
+    webhookSecret: { type: "string", description: "Signing secret for inbound webhook verification. Falls back to `FOO_WEBHOOK_SECRET`." },
+  }}
+/>
+
+### Environment variables
+
+{/* Only variables the adapter's source or README documents. Say whether
+    each is required only when the source or README says so. */}
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `FOO_API_KEY` | Yes, unless `apiKey` is passed | Foo API key |
+| `FOO_WEBHOOK_SECRET` | Yes, unless `webhookSecret` is passed | Webhook signing secret |
+
+## Webhooks
+
+{/* Optional. Which events the adapter handles and how it verifies them. */}
+
+The adapter handles Foo `message.created` events and ignores other event types. It verifies each request's signature with `webhookSecret` and returns `401` when verification fails.
+
+{/* Capability sections go here, one ## each, most commonly needed first:
+    ## Cards, ## Streaming, ## Attachments, ## Reactions, ## Message history.
+    Keep each faithful to the adapter's real behavior. */}
+
+## Thread IDs
+
+Thread IDs take the form `foo:{conversationId}`, for example `foo:c_123`.
+
+## Limitations
+
+{/* Optional. Caveats and unsupported behavior. */}
+
+- Foo has no message editing API, so `editMessage` throws `NotImplementedError`.
+
+## Feature support
+
+<FeatureSupport />
+
+## Resources
+
+{/* Optional, always last. */}
+
+- [Adapter source](https://github.com/YOUR_ORG/YOUR_REPO)

@@ -97,6 +97,7 @@ cask "font-sf-mono-nerd-font-ligaturized"
 cask "1password"
 cask "1password-cli"
 cask "google-chrome"
+cask "finicky"                # routes URLs to Chrome profiles
 cask "cmux"                   # ghostty-based terminal for AI coding agents
 cask "zed"                    # editor
 cask "claude"                 # Claude desktop app

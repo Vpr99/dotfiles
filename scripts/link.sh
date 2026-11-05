@@ -36,6 +36,8 @@ echo "Linking from $DOTFILES"
 # --- fish ---
 link "$DOTFILES/config/fish/config.fish"            "$HOME/.config/fish/config.fish"
 link "$DOTFILES/config/fish/functions/claude.fish"  "$HOME/.config/fish/functions/claude.fish"
+link "$DOTFILES/config/fish/functions/load-env.fish" "$HOME/.config/fish/functions/load-env.fish"
+link "$DOTFILES/config/fish/functions/morning.fish"  "$HOME/.config/fish/functions/morning.fish"
 # wt: one file per function so fish's autoloader picks them up.
 for f in "$DOTFILES"/config/fish/functions/wt-*.fish "$DOTFILES"/config/fish/functions/_wt_*.fish; do
   link "$f" "$HOME/.config/fish/functions/$(basename "$f")"
@@ -49,6 +51,16 @@ link "$DOTFILES/config/git/gitconfig"          "$HOME/.gitconfig"
 link "$DOTFILES/config/git/gitconfig-work"     "$HOME/.gitconfig-work"
 link "$DOTFILES/config/git/gitconfig-personal" "$HOME/.gitconfig-personal"
 link "$DOTFILES/config/git/ignore"             "$HOME/.config/git/ignore"
+link "$DOTFILES/config/git/allowed_signers"    "$HOME/.config/git/allowed_signers"
+
+# --- ghostty ---
+link "$DOTFILES/config/ghostty/config" "$HOME/.config/ghostty/config"
+
+# --- gh (config only; hosts.yml and the keychain token stay untracked) ---
+link "$DOTFILES/config/gh/config.yml" "$HOME/.config/gh/config.yml"
+
+# --- finicky (default browser; routes URLs to Chrome profiles) ---
+link "$DOTFILES/config/finicky/finicky.ts" "$HOME/.config/finicky.ts"
 
 # --- claude / agents ---
 # skills chain:  ~/.claude/skills -> ~/.agents/skills -> repo/agents/skills

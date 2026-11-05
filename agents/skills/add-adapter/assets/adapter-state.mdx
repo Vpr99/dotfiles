@@ -1,0 +1,91 @@
+---
+title: Foo DB
+description: One-to-two sentence summary of the backend the adapter stores Chat SDK state in and what it supports. Shown in search and listings.
+packageName: "YOUR_PUBLISHED_ADAPTER_PACKAGE"
+slug: foo-db
+type: state
+tagline: One line on the backend and who the adapter is for. Shown on the adapter card.
+community: true
+# vendor-official only. Delete both lines for a community adapter:
+vendorOfficial: true
+author: Foo
+mdxBody: true
+# Capabilities live in the catalog entry's `features` field, not here.
+---
+
+{/* Section order and naming follow ../references/page-layout.md (state
+    adapters). Delete the optional sections the adapter doesn't need, and
+    replace YOUR_PUBLISHED_ADAPTER_PACKAGE everywhere with the exact npm name
+    of the published adapter. This template describes a fictional Foo DB
+    adapter. */}
+
+## Install
+
+<PackageInstall package="YOUR_PUBLISHED_ADAPTER_PACKAGE chat" />
+
+## Quick start
+
+```typescript title="lib/bot.ts" lineNumbers
+import { Chat } from "chat";
+import { createFooDbState } from "YOUR_PUBLISHED_ADAPTER_PACKAGE";
+
+export const bot = new Chat({
+  userName: "mybot",
+  adapters: {
+    /* your platform adapters */
+  },
+  state: createFooDbState({ url: process.env.FOO_DB_URL }),
+});
+```
+
+## Configuration
+
+<TypeTable
+  type={{
+    url: { type: "string", description: "Foo DB connection URL. Falls back to `FOO_DB_URL`." },
+    keyPrefix: { type: "string", default: '"chat-sdk"', description: "Prefix for every key, so several bots can share one database." },
+  }}
+/>
+
+### Environment variables
+
+{/* Only variables the adapter's source or README documents. */}
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `FOO_DB_URL` | Yes, unless `url` or `client` is passed | Foo DB connection URL |
+
+## Using an existing client
+
+{/* Optional. Show how to pass a client the app already manages, and say
+    whether the adapter connects or closes it. */}
+
+Pass `client` instead of `url` to reuse a connection your app already manages. The adapter doesn't close a client it didn't create.
+
+## Data model
+
+{/* Optional. What the adapter stores and where, taken from the source. */}
+
+| Data | Stored as |
+| --- | --- |
+| Subscriptions | `{keyPrefix}:subscriptions` |
+| Locks | `{keyPrefix}:lock:{threadId}`, with a TTL |
+| Cache | `{keyPrefix}:cache:{key}` |
+
+{/* Capability sections go here, one ## each: sharding, cleanup, locking. */}
+
+## Production notes
+
+{/* Optional. Operational guidance for running the adapter in production. */}
+
+- Run cleanup for expired rows on a schedule if the backend doesn't expire them itself.
+
+## Feature support
+
+<FeatureSupport />
+
+## Resources
+
+{/* Optional, always last. */}
+
+- [Adapter source](https://github.com/YOUR_ORG/YOUR_REPO)

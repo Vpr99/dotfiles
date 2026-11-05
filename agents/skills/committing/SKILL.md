@@ -1,6 +1,6 @@
 ---
 name: committing
-description: Formats scoped commit messages (scope: subject) with a structured progress footer. Loaded when making commits as part of task execution — used by implementing-tasks and any other skill that commits code.
+description: 'Formats scoped commit messages (scope: subject) with a structured progress footer. Loaded when making commits as part of task execution — used by implementing-tasks and any other skill that commits code.'
 ---
 
 # Commit

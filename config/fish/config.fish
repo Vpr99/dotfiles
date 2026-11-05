@@ -43,9 +43,10 @@ abbr --erase m &>/dev/null; abbr --add m "git merge"
 abbr --erase pp &>/dev/null; abbr --add pp "git pull"
 abbr --erase p &>/dev/null; abbr --add p "git push"
 abbr --erase c &>/dev/null; abbr --add c "clear"
-abbr --erase notes &>/dev/null; abbr --add notes "code $HOME/Dropbox/notes.md"
 abbr --erase workshop &>/dev/null; abbr --add workshop "cd $HOME/code/work/workshop"
 abbr --erase www &>/dev/null; abbr --add www "cd $HOME/code/work/www"
+abbr --erase obs &>/dev/null; abbr --add obs 'cd ~/Vault'
+abbr --erase nps &>/dev/null; abbr --add nps "cd $HOME/code/nps"
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
@@ -66,4 +67,15 @@ source /Users/ericskram/.config/op/plugins.sh
 # every subsequent shell inherits the universal vars. To refresh: `load-env`.
 if status is-interactive; and not set -q __OP_ENV_LOADED_AT
     load-env
+end
+
+# >>> minimal >>>
+if test -f "$HOME/.minimal/shim/shell-init/fish.fish"; source "$HOME/.minimal/shim/shell-init/fish.fish"; end
+# <<< minimal <<<
+
+eval "$(/opt/homebrew/bin/brew shellenv fish)"
+
+# Load the git signing key into whatever agent this shell uses (passphrase from macOS keychain).
+if status is-interactive
+    ssh-add --apple-load-keychain -q 2>/dev/null
 end

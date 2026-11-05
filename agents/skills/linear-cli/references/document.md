@@ -1,28 +1,29 @@
 # document
 
-> Manage Linear documents
+> Manage documents
 
 ## Usage
 
 ```
-Usage:   linear document
+Manage documents
 
-Description:
-
-  Manage Linear documents
-
-Options:
-
-  -h, --help           - Show this help.                      
-  --workspace  <slug>  - Target workspace (uses credentials)  
+Usage: linear document [OPTIONS] <COMMAND>
 
 Commands:
+  list     List documents
+  view     Show a document
+  create   Create a document
+  update   Update a document
+  delete   Delete a document (moves it to the trash)
+  comment  Add and list comments on a document
+  help     Print this message or the help of the given subcommand(s)
 
-  list, l                  - List documents                    
-  view, v    <id>          - View a document's content         
-  create, c                - Create a new document             
-  update, u  <documentId>  - Update an existing document       
-  delete, d  [documentId]  - Delete a document (moves to trash)
+Options:
+  -h, --help  Print help
+
+Global options:
+      --workspace <SLUG>  Workspace to use, by the name its credential is stored under
+      --no-input          Never prompt; fail instead when a required value is missing
 ```
 
 ## Subcommands
@@ -32,105 +33,298 @@ Commands:
 > List documents
 
 ```
-Usage:   linear document list
+List documents
 
-Description:
-
-  List documents
+Usage: linear document list [OPTIONS]
 
 Options:
+      --project <PROJECT>        Show this project's documents (ID, slug, or name)
+      --issue <ISSUE>            Show this issue's documents (like ENG-123)
+      --initiative <INITIATIVE>  Show this initiative's documents (ID, slug, or name)
+      --team <TEAM>              Show this team's documents (key, name, or ID); with --cycle, the
+                                 cycle's team
+      --cycle <CYCLE>            Show this cycle's documents: a name, number, `active`, `next`,
+                                 `previous`, or an offset like +1 or -1
+      --release <RELEASE>        Show this release's documents (ID, name, or version)
+  -j, --json                     Print JSON
+      --limit <LIMIT>            Maximum number of documents to show (a number or `all`) [default:
+                                 50]
+  -h, --help                     Print help
 
-  -h, --help              - Show this help.                                        
-  --workspace  <slug>     - Target workspace (uses credentials)                    
-  --project    <project>  - Filter by project (slug or name)                       
-  --issue      <issue>    - Filter by issue (identifier like TC-123)               
-  --json                  - Output as JSON                                         
-  --limit      <limit>    - Limit results                             (Default: 50)
+Global options:
+      --workspace <SLUG>  Workspace to use, by the name its credential is stored under
+      --no-input          Never prompt; fail instead when a required value is missing
 ```
 
 ### view
 
-> View a document's content
+> Show a document
 
 ```
-Usage:   linear document view <id>
+Show a document
 
-Description:
+Usage: linear document view [OPTIONS] <DOCUMENT>
 
-  View a document's content
+Arguments:
+  <DOCUMENT>  Document ID or slug
 
 Options:
+      --raw          Print the Markdown source instead of rendering it
+  -w, --web          Open the document in the browser
+  -j, --json         Print JSON
+      --no-pager     Do not page long output
+      --no-download  Keep remote image and file URLs instead of downloading them
+  -h, --help         Print help
 
-  -h, --help           - Show this help.                        
-  --workspace  <slug>  - Target workspace (uses credentials)    
-  --raw                - Output raw markdown without rendering  
-  -w, --web            - Open document in browser               
-  --json               - Output full document as JSON
+Global options:
+      --workspace <SLUG>  Workspace to use, by the name its credential is stored under
+      --no-input          Never prompt; fail instead when a required value is missing
 ```
 
 ### create
 
-> Create a new document
+> Create a document
 
 ```
-Usage:   linear document create
+Create a document
 
-Description:
-
-  Create a new document
+Usage: linear document create [OPTIONS]
 
 Options:
+  -t, --title <TITLE>
+          Document title
 
-  -h, --help                     - Show this help.                           
-  --workspace         <slug>     - Target workspace (uses credentials)       
-  -t, --title         <title>    - Document title (required)                 
-  -c, --content       <content>  - Markdown content (inline)                 
-  -f, --content-file  <path>     - Read content from file                    
-  --project           <project>  - Attach to project (slug or ID)            
-  --issue             <issue>    - Attach to issue (identifier like TC-123)  
-  --icon              <icon>     - Document icon (emoji)                     
-  -i, --interactive              - Interactive mode with prompts
+  -c, --content <MARKDOWN>
+          Document text, in Markdown
+
+  -f, --content-file <FILE>
+          Read the document from a Markdown file (- for stdin)
+
+      --project <PROJECT>
+          Attach the document to a project (ID, slug, or name)
+
+      --issue <ISSUE>
+          Attach the document to an issue (like ENG-123)
+
+      --initiative <INITIATIVE>
+          Attach the document to an initiative (ID, slug, or name)
+
+      --team <TEAM>
+          Attach the document to a team (key, name, or ID); with --cycle, the cycle's team
+
+      --cycle <CYCLE>
+          Attach the document to a cycle: a name, number, `active`, `next`, `previous`, or an offset
+          like +1 or -1
+
+      --release <RELEASE>
+          Attach the document to a release (ID, name, or version)
+
+      --icon <ICON>
+          Document icon (an emoji)
+
+  -i, --interactive
+          Also prompt for the optional fields
+
+  -y, --yes
+          Do not ask for confirmation
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+Global options:
+      --workspace <SLUG>
+          Workspace to use, by the name its credential is stored under
+
+      --no-input
+          Never prompt; fail instead when a required value is missing
+
+Linear Markdown: a plain Linear URL creates a mention; `@name`, `@[Name](id)`,
+and `[Name](url)` do not. Get a person's URL from the `url` field of
+`linear team members <TEAM> --json`, or an issue's from `linear issue url <ID>`.
+Run `linear markdown` for collapsible sections and the full reference.
 ```
 
 ### update
 
-> Update an existing document
+> Update a document
 
 ```
-Usage:   linear document update <documentId>
+Update a document
 
-Description:
+Usage: linear document update [OPTIONS] <DOCUMENT>
 
-  Update an existing document
+Arguments:
+  <DOCUMENT>
+          Document ID or slug
 
 Options:
+  -t, --title <TITLE>
+          New title
 
-  -h, --help                     - Show this help.                              
-  --workspace         <slug>     - Target workspace (uses credentials)          
-  -t, --title         <title>    - New title for the document                   
-  -c, --content       <content>  - New markdown content (inline)                
-  -f, --content-file  <path>     - Read new content from file                   
-  --icon              <icon>     - New icon (emoji)                             
-  -e, --edit                     - Open current content in $EDITOR for editing
+  -c, --content <MARKDOWN>
+          New text, in Markdown
+
+  -f, --content-file <FILE>
+          Read the new text from a Markdown file (- for stdin)
+
+      --icon <ICON>
+          New icon (an emoji)
+
+      --project <PROJECT>
+          Move the document to a project (ID, slug, or name)
+
+      --issue <ISSUE>
+          Move the document to an issue (like ENG-123)
+
+      --initiative <INITIATIVE>
+          Move the document to an initiative (ID, slug, or name)
+
+      --team <TEAM>
+          Move the document to a team (key, name, or ID); with --cycle, the cycle's team
+
+      --cycle <CYCLE>
+          Move the document to a cycle: a name, number, `active`, `next`, `previous`, or an offset
+          like +1 or -1
+
+      --release <RELEASE>
+          Move the document to a release (ID, name, or version)
+
+  -e, --edit
+          Edit the current text in $EDITOR
+
+      --force
+          Replace the text even if inline comments may lose their anchors
+
+  -y, --yes
+          Do not ask for confirmation
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+Global options:
+      --workspace <SLUG>
+          Workspace to use, by the name its credential is stored under
+
+      --no-input
+          Never prompt; fail instead when a required value is missing
+
+Linear Markdown: a plain Linear URL creates a mention; `@name`, `@[Name](id)`,
+and `[Name](url)` do not. Get a person's URL from the `url` field of
+`linear team members <TEAM> --json`, or an issue's from `linear issue url <ID>`.
+Run `linear markdown` for collapsible sections and the full reference.
 ```
 
 ### delete
 
-> Delete a document (moves to trash)
+> Delete a document (moves it to the trash)
 
 ```
-Usage:   linear document delete [documentId]
+Delete a document (moves it to the trash)
 
-Description:
+Usage: linear document delete [OPTIONS] [DOCUMENT]
 
-  Delete a document (moves to trash)
+Arguments:
+  [DOCUMENT]  Document ID or slug
 
 Options:
+  -y, --yes               Do not ask for confirmation
+      --bulk [<IDS>...]   Act on several at once instead of one
+      --bulk-file <FILE>  Read the IDs from a file, one per line
+      --bulk-stdin        Read the IDs from stdin, one per line
+  -h, --help              Print help
 
-  -h, --help              - Show this help.                                     
-  --workspace   <slug>    - Target workspace (uses credentials)                 
-  -y, --yes               - Skip confirmation prompt                            
-  --bulk        <ids...>  - Delete multiple documents by slug or ID             
-  --bulk-file   <file>    - Read document slugs/IDs from a file (one per line)  
-  --bulk-stdin            - Read document slugs/IDs from stdin
+Global options:
+      --workspace <SLUG>  Workspace to use, by the name its credential is stored under
+      --no-input          Never prompt; fail instead when a required value is missing
+```
+
+### comment
+
+> Add and list comments on a document
+
+```
+Add and list comments on a document
+
+Usage: linear document comment [OPTIONS] <COMMAND>
+
+Commands:
+  add   Comment on a document, or reply to a comment
+  list  List a document's comments
+  help  Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help  Print help
+
+Global options:
+      --workspace <SLUG>  Workspace to use, by the name its credential is stored under
+      --no-input          Never prompt; fail instead when a required value is missing
+```
+
+#### comment subcommands
+
+##### add
+
+> Comment on a document, or reply to a comment
+
+```
+Comment on a document, or reply to a comment
+
+Usage: linear document comment add [OPTIONS] <DOCUMENT>
+
+Arguments:
+  <DOCUMENT>
+          Document ID or slug
+
+Options:
+  -b, --body <TEXT>
+          Comment text, in Markdown
+
+      --body-file <FILE>
+          Read the comment from a Markdown file (- for stdin)
+
+  -p, --reply-to <COMMENT>
+          Reply to this top-level comment (by ID)
+          
+          [alias: --parent]
+
+  -y, --yes
+          Do not ask for confirmation
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+Global options:
+      --workspace <SLUG>
+          Workspace to use, by the name its credential is stored under
+
+      --no-input
+          Never prompt; fail instead when a required value is missing
+
+Linear Markdown: a plain Linear URL creates a mention; `@name`, `@[Name](id)`,
+and `[Name](url)` do not. Get a person's URL from the `url` field of
+`linear team members <TEAM> --json`, or an issue's from `linear issue url <ID>`.
+Run `linear markdown` for collapsible sections and the full reference.
+```
+
+##### list
+
+> List a document's comments
+
+```
+List a document's comments
+
+Usage: linear document comment list [OPTIONS] <DOCUMENT>
+
+Arguments:
+  <DOCUMENT>  Document ID or slug
+
+Options:
+      --limit <LIMIT>  Maximum number of comments to show (a number or `all`) [default: all]
+  -j, --json           Print JSON
+      --no-pager       Do not page long output
+  -h, --help           Print help
+
+Global options:
+      --workspace <SLUG>  Workspace to use, by the name its credential is stored under
+      --no-input          Never prompt; fail instead when a required value is missing
 ```

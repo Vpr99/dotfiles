@@ -32,7 +32,7 @@ linear initiative remove-project <initiative> <project>
 # List labels (shows ID, name, color, team)
 linear label list
 linear label list --team DEV
-linear label list --workspace  # Workspace-level only
+linear label list --workspace-only  # Workspace-level only
 
 # Create label
 linear label create --name "Bug" --color "#EB5757"
@@ -56,6 +56,15 @@ linear project view <id>
 linear project create --name "New Feature" --team DEV
 linear project create --name "Q1 Work" --team DEV --initiative "Q1 Goals"
 linear project create -i  # Interactive mode
+
+# Change a project's teams, labels, or initiatives incrementally
+linear project update <id> --add-team OPS --remove-team APP
+linear project update <id> --add-label "Launch" --remove-label "Beta"
+linear project update <id> --add-initiative "Q1 Goals"   # ID, slug, or name
+
+# Replace a whole set (cannot be combined with that set's --add-*/--remove-*)
+linear project update <id> --team DEV --team OPS
+linear project update <id> --initiative "Q1 Goals" --initiative "Platform"
 ```
 
 ## Bulk Operations
@@ -74,12 +83,18 @@ echo -e "DEV-123\nDEV-124" | linear issue delete --bulk-stdin
 linear initiative archive --bulk <id1> <id2>
 ```
 
-## Adding Labels to Issues
+## Updating Labels on Issues
 
 ```bash
-# Add label to issue
-linear issue update DEV-123 --label "Bug"
+# Add a label, keeping the issue's existing labels
+linear issue update DEV-123 --add-label "Bug"
 
-# Add multiple labels
+# Remove a label from this issue only (label delete removes it team-wide)
+linear issue update DEV-123 --remove-label "sprint-42"
+
+# Swap labels atomically in one update
+linear issue update DEV-123 --remove-label "sprint-42" --add-label "sprint-43"
+
+# Replace the entire label set with exactly these labels
 linear issue update DEV-123 --label "Bug" --label "High Priority"
 ```

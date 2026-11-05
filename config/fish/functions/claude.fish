@@ -5,5 +5,6 @@ function claude --description "Claude Code with a task list keyed to the current
         set -l safe_branch (string replace -a '/' '--' -- $branch | string replace -ra '[^a-zA-Z0-9_-]' '')
         set -x CLAUDE_CODE_TASK_LIST_ID "$safe_branch"
     end
+    set -x CLAUDE_CODE_DISABLE_AUTO_MEMORY 1
     command claude --dangerously-skip-permissions $argv
 end
