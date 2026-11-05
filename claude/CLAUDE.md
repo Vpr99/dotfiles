@@ -15,7 +15,7 @@ Macotron is the default browser. Its `chrome-profiles` plugin sends each link to
 - Don't edit `~/.config/macotron/plugins/chrome-profiles.js` for a rule change. Any edit to plugin code makes Macotron park it until Eric re-approves it. If the code has to change, run `node chrome-profiles.js` (self-test) first and tell Eric it needs approval.
 - Rule format: `{ "host", "profile", "path"?, "from"? }`. First match wins, otherwise `default`. `host` matches the domain and its subdomains. `path` is a prefix matched on `/` segment boundaries. `from` is the bundle ID of the app that sent the link.
 - Profiles are folder names (`Default`, `Profile 1`), never display names. Two profiles are both called "NPS".
-- `Default` = personal (eric@skram.com, fallback). `Profile 1` = work (eric@northpole.security). `Profile 2` = svc-hermey: don't route anything there unless Eric asks.
+- `Default` = personal (eric@skram.com). `Profile 1` = work (eric@northpole.security), and it's the `default` route for now. Only YouTube is forced to personal. The explicit NPS rules are redundant for now, but kept on purpose: Eric may switch the default back. `Profile 2` = svc-hermey: don't route anything there unless Eric asks.
 - Debug with: `/usr/bin/log show --info --last 10m --style compact --predicate 'subsystem == "io.statico.macotron" AND category == "plugin"'`. A broken rules file sends every link to `Default` and shows an orange warning on the plugin in Settings.
 - Only links opened from other apps (and `open <url>`) go through the router. A link clicked inside Chrome stays in that profile.
 

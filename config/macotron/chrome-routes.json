@@ -1,6 +1,8 @@
 {
-  "default": "Default",
+  "default": "Profile 1",
   "rules": [
+    { "host": "youtube.com", "profile": "Default" },
+    { "host": "youtu.be", "profile": "Default" },
     { "host": "northpole.security", "profile": "Profile 1" },
     { "host": "workshop.cloud", "profile": "Profile 1" },
     { "host": "meet.google.com", "profile": "Profile 1" },
