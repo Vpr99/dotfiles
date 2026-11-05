@@ -59,8 +59,8 @@ link "$DOTFILES/config/ghostty/config" "$HOME/.config/ghostty/config"
 # --- gh (config only; hosts.yml and the keychain token stay untracked) ---
 link "$DOTFILES/config/gh/config.yml" "$HOME/.config/gh/config.yml"
 
-# --- finicky (default browser; routes URLs to Chrome profiles) ---
-link "$DOTFILES/config/finicky/finicky.ts" "$HOME/.config/finicky.ts"
+# --- macotron (chrome-profiles plugin routes links to Chrome profiles) ---
+link "$DOTFILES/config/macotron/chrome-routes.json" "$HOME/.config/macotron/chrome-routes.json"
 
 # --- claude / agents ---
 # skills chain:  ~/.claude/skills -> ~/.agents/skills -> repo/agents/skills

@@ -1,0 +1,9 @@
+{
+  "default": "Default",
+  "rules": [
+    { "host": "northpole.security", "profile": "Profile 1" },
+    { "host": "workshop.cloud", "profile": "Profile 1" },
+    { "host": "meet.google.com", "profile": "Profile 1" },
+    { "host": "github.com", "path": "/northpolesec", "profile": "Profile 1" }
+  ]
+}
