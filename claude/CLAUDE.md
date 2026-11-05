@@ -16,6 +16,7 @@ Where to start:
 - **What's installed:** `~/.config/macotron/plugins/*.js`, one file per feature. `grep -h -A3 'macotron.plugin({' ~/.config/macotron/plugins/*.js | grep -E 'title:|description:'` lists them.
 - **How plugins work:** read `~/.config/macotron/AGENTS.md` (the plugin guide) and `~/.config/macotron/.cache/macotron.d.ts` (the typed API) before writing or changing a plugin. Example plugins are in `/Applications/Macotron.app/Contents/Resources/Catalog/`. Source: `opensrc path github:statico/macotron`.
 - **Hotkeys, plugin options, disabled plugins:** `~/.config/macotron/settings.json`. Change plugin options in Settings → Plugins, not in the JSON.
+- **Version control:** `~/.config/macotron` is a git repo (private: `vpr99/macotron-config`). Commit and push plugin changes there. Shared plugins also have a public repo each (`vpr99/macotron-<name>`, GitHub topic `macotron-plugin`, which is what Macotron's Community catalog searches for). Keep both copies the same, and keep anything personal out of the public one.
 - **Logs:** `/usr/bin/log show --info --last 10m --style compact --predicate 'subsystem == "io.statico.macotron"'`. Add `AND category == "plugin"` to see only plugin output. Use the full path: zsh's `log` builtin shadows it.
 
 Rules:
