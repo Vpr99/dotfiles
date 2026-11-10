@@ -1,4 +1,5 @@
 roborev-*/
+!roborev-gate/
 
 # Tool state, not skills.
 .trash/
