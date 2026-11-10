@@ -11,10 +11,14 @@
 	signingkey = /Users/ericskram/.ssh/git_signing.pub
 	email = eric@skram.com
 
-# Force all GitHub traffic over SSH (via the 1Password agent), even for repos
-# cloned with an https:// URL. Stops the "Username for https://github.com" prompt.
-[url "git@github.com:"]
+# Send all GitHub git traffic over HTTPS with the gh token (credential helper below).
+# The 1Password SSH agent refuses headless processes (agents, background jobs).
+# The username in the URL makes curl skip the ~/.netrc `x-access-token` entry, a
+# read-only internal-auth PAT that Docker builds mount, and ask gh instead.
+[url "https://Vpr99@github.com/"]
   insteadOf = https://github.com/
+  insteadOf = git@github.com:
+  insteadOf = ssh://git@github.com/
 
 [push]
   autoSetupRemote = true
