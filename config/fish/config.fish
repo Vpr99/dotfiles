@@ -58,14 +58,14 @@ if not string match -q -- "$PNPM_HOME/bin" $PATH
   set -gx PATH "$PNPM_HOME/bin" $PATH
 end
 # pnpm end
-source /Users/ericskram/.config/op/plugins.sh
+test -f ~/.config/op/plugins.sh; and source ~/.config/op/plugins.sh
 
 # -----------------------------------------------------------------------------
 # 1Password-managed env (drain FIFO once per login → universal exported vars)
 # -----------------------------------------------------------------------------
 # First interactive shell after `set -Ue __OP_ENV_LOADED_AT` runs load-env;
 # every subsequent shell inherits the universal vars. To refresh: `load-env`.
-if status is-interactive; and not set -q __OP_ENV_LOADED_AT
+if status is-interactive; and not set -q __OP_ENV_LOADED_AT; and test -e ~/.config/.env
     load-env
 end
 
@@ -73,7 +73,9 @@ end
 if test -f "$HOME/.minimal/shim/shell-init/fish.fish"; source "$HOME/.minimal/shim/shell-init/fish.fish"; end
 # <<< minimal <<<
 
-eval "$(/opt/homebrew/bin/brew shellenv fish)"
+# Homebrew on Apple Silicon, MacPorts on the Intel home server.
+test -x /opt/homebrew/bin/brew; and eval "$(/opt/homebrew/bin/brew shellenv fish)"
+test -d /opt/local/bin; and fish_add_path /opt/local/bin /opt/local/sbin
 
 # Load the git signing key into whatever agent this shell uses (passphrase from macOS keychain).
 if status is-interactive

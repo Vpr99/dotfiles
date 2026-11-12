@@ -51,7 +51,7 @@
 
 [credential "https://github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = "!f() { gh=/opt/homebrew/bin/gh; [ -x $gh ] || gh=/opt/local/bin/gh; $gh auth git-credential \"$@\"; }; f"
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = "!f() { gh=/opt/homebrew/bin/gh; [ -x $gh ] || gh=/opt/local/bin/gh; $gh auth git-credential \"$@\"; }; f"

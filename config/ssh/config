@@ -10,3 +10,12 @@ Include ~/.orbstack/ssh/config
 # Your SSH keys live in 1Password — there are no private keys on disk.
 Host *
 	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Vault sync to the home server. On-disk key, because the 1Password agent refuses
+# headless processes (the launchd auto-commit job). The Air's authorized_keys
+# restricts this key to git-shell, so it can push and pull, nothing else.
+Host air-vault
+	HostName Erics-MacBook-Air.local
+	IdentityFile ~/.ssh/air_vault
+	IdentitiesOnly yes
+	IdentityAgent none
