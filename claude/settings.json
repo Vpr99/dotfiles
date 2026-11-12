@@ -1,20 +1,52 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-5-20250929"
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-5-20250929",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
+    "deny": [
+      "ShareOnboardingGuide",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "DesignSync",
+      "NotebookEdit",
+      "RemoteTrigger",
+      "ScheduleWakeup",
+      "ReportFindings",
+      "CronCreate",
+      "CronDelete",
+      "CronList"
+    ],
     "defaultMode": "auto"
   },
+  "model": "opus",
+  "disableClaudeAiConnectors": true,
+  "disableBundledSkills": true,
+  "hooks": {},
+  "disableWorkflows": true,
+  "disableArtifact": true,
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
     "padding": 0
   },
   "enabledPlugins": {
-    "playground@claude-plugins-official": true
+    "ponytail@ponytail": false,
+    "superpowers@superpowers-marketplace": true,
+    "visual-explainer@skills-dir": false,
+    "fp-check@trailofbits": false,
+    "differential-review@trailofbits": false,
+    "variant-analysis@trailofbits": false,
+    "sharp-edges@trailofbits": false,
+    "insecure-defaults@trailofbits": false,
+    "spec-to-code-compliance@trailofbits": false,
+    "audit-context-building@trailofbits": false,
+    "post-patch-validation@trailofbits": false,
+    "supply-chain-risk-auditor@trailofbits": false,
+    "agentic-actions-auditor@trailofbits": false
   },
   "extraKnownMarketplaces": {
     "claude-obsidian-marketplace": {
@@ -22,14 +54,48 @@
         "source": "github",
         "repo": "AgriciDaniel/claude-obsidian"
       }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    },
+    "hellosverre-mods": {
+      "source": {
+        "source": "github",
+        "repo": "hellosverre/claude-skins"
+      }
+    },
+    "trailofbits": {
+      "source": {
+        "source": "github",
+        "repo": "trailofbits/skills"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5": {},
+    "claude-opus-5-5": {
+      "effortLevel": "high",
+      "autoCompactWindow": 300000
+    }
+  },
+  "promptSuggestionEnabled": false,
+  "awaySummaryEnabled": false,
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark-daltonized",
   "verbose": true,
+  "preferredNotifChannel": "notifications_disabled",
   "agentPushNotifEnabled": false,
   "skipAutoPermissionPrompt": true
 }

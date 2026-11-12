@@ -11,11 +11,11 @@ Include ~/.orbstack/ssh/config
 Host *
 	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
-# Vault sync to the home server. On-disk key, because the 1Password agent refuses
-# headless processes (the launchd auto-commit job). The Air's authorized_keys
-# restricts this key to git-shell, so it can push and pull, nothing else.
-Host air-vault
-	HostName Erics-MacBook-Air.local
-	IdentityFile ~/.ssh/air_vault
+# Vault sync to creosote (home server, 2020 MacBook Air). On-disk key, because the
+# 1Password agent refuses headless processes (the launchd auto-commit job).
+# creosote restricts this key to git-shell: it can push and pull, nothing else.
+Host creosote-git
+	HostName creosote.local
+	IdentityFile ~/.ssh/creosote_git
 	IdentitiesOnly yes
 	IdentityAgent none
